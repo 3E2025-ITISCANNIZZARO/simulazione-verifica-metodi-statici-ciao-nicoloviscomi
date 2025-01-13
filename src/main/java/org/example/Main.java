@@ -1,3 +1,4 @@
+//Esercizio Viscomi e Ronchi
 package org.example;
 
 /**
@@ -9,7 +10,7 @@ public class Main {
     /**
      * default constructor no usages
      */
-    public Main() {};
+    public Main() {}
 
     static final String cognome=""; // assegnare alla variabile il proprio cognome
     static final String nome=""; // assegnare alla variabile il proprio nome
@@ -38,9 +39,6 @@ public class Main {
         System.out.println(giorniLumaca(5,2,15));
         System.out.println("ESERCIZIO 8");
         System.out.println(coordinatePunto(0,0,0,1,1,0));
-
-
-
     }
 
     /**
@@ -57,13 +55,12 @@ public class Main {
      * Esercizio 1
      * sviluppare il metodo che restituisce la somma dei due parametri in ingresso
      * @param a addendo 1
-     * @param b addendo 2
+     * @param b addendo 2 
      * @return somma dei due addendi
      */
     public static int somma(int a,int b) {
-        int risposta=0;
-        // TODO: SCRIVI QUI IL CODICE
-        return risposta;
+        int risposta = a + b; // somma dei due addendi
+        return risposta; 
     }
 
     /**
@@ -74,8 +71,12 @@ public class Main {
      * @return "maggiorenne" o "minorenne"
      */
     public static String isMaggiorenne(int age) {
-        String risposta="maggiorenne,minorenne";
-        // TODO: SCRIVI QUI IL CODICE
+        String risposta;
+        if (age >= 18) {
+            risposta = "maggiorenne"; // la persona è maggiorenne
+        } else {
+            risposta = "minorenne"; // la persona è minorenne
+        }
         return risposta;
     }
 
@@ -86,8 +87,12 @@ public class Main {
      * @return vero se è una vocale, falso negli altri casi
      */
     public static boolean isVocale(char carattere) {
-        boolean risposta=false;
-        // TODO: SCRIVI QUI IL CODICE
+        boolean risposta = false;
+        // Verifica se il carattere è una vocale
+        char c = Character.toLowerCase(carattere);
+        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+            risposta = true; // è una vocale
+        }
         return risposta;
     }
 
@@ -100,8 +105,15 @@ public class Main {
      * @return tipo triangolo
      */
     public static String tipoTriangolo(float lato1, float lato2, float lato3) {
-        String risposta="equilatero,isoscele,scaleno";
-        // TODO: SCRIVI QUI IL CODICE
+        String risposta;
+        // Verifica il tipo di triangolo
+        if (lato1 == lato2 && lato2 == lato3) {
+            risposta = "equilatero"; // tutti i lati sono uguali
+        } else if (lato1 == lato2 || lato2 == lato3 || lato1 == lato3) {
+            risposta = "isoscele"; // almeno due lati sono uguali
+        } else {
+            risposta = "scaleno"; // tutti i lati sono diversi
+        }
         return risposta;
     }
 
@@ -113,8 +125,11 @@ public class Main {
      * @return (String) nome del giorno della settimana
      */
     public static String giornoSettimana(int giorno) {
-        String risposta="lunedì,martedì,mercoledì,giovedì,venerdì,sabato,domenica";
-        // TODO: SCRIVI QUI IL CODICE
+        String risposta;
+        // Giorno della settimana, considerando che il 1 gennaio è lunedì
+        String[] giorni = {"lunedì", "martedì", "mercoledì", "giovedì", "venerdì", "sabato", "domenica"};
+        int indice = (giorno - 1) % 7; // Poiché il 1 gennaio è lunedì (indice 0)
+        risposta = giorni[indice];
         return risposta;
     }
 
@@ -128,9 +143,15 @@ public class Main {
      * @return stringa di numeri separati da una virgola
      */
     public static String ordineDecrescente(int fine, int inizio) {
-        String risposta="100,99,98";
-        // TODO: SCRIVI QUI IL CODICE
-        return risposta;
+        StringBuilder risultato = new StringBuilder();
+        // Aggiunge i numeri in ordine decrescente separati da virgola
+        for (int i = fine; i >= inizio; i--) {
+            if (i != fine) {
+                risultato.append(",");
+            }
+            risultato.append(i);
+        }
+        return risultato.toString();
     }
 
     /**
@@ -145,9 +166,17 @@ public class Main {
      * @return giorni impiegati dalla lumaca a salire il muro
      */
     public static int giorniLumaca(float sale, float scende, float muro) {
-        int risposta=0;
-        // TODO: SCRIVI QUI IL CODICE
-        return risposta;
+        int giorni = 0;
+        float distanza = 0;
+        
+        // La lumaca sale di giorno e scende di notte
+        while (distanza < muro) {
+            giorni++;
+            distanza += sale;
+            if (distanza >= muro) break; // Se la lumaca arriva alla cima, termina
+            distanza -= scende;
+        }
+        return giorni;
     }
 
     /**
@@ -163,10 +192,12 @@ public class Main {
      * @param y3 ordinata P3
      * @return ascissaP4,ordinataP4
      */
-
-    public static String coordinatePunto(int x1, int y1, int x2, int y2,int x3,int y3) {
-        String risposta="1,1";
-        // TODO: SCRIVI QUI IL CODICE
+    public static String coordinatePunto(int x1, int y1, int x2, int y2, int x3, int y3) {
+        String risposta;
+        // Calcola le coordinate del quarto punto di un rettangolo dato
+        int x4 = (x1 == x2) ? x3 : (x1 == x3) ? x2 : x1;
+        int y4 = (y1 == y2) ? y3 : (y1 == y3) ? y2 : y1;
+        risposta = x4 + "," + y4;
         return risposta;
     }
 }
