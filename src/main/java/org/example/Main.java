@@ -60,7 +60,7 @@ public class Main {
      */
     public static int somma(int a,int b) {
         int risposta = a + b; // somma dei due addendi
-        return risposta;
+        return risposta; 
     }
 
     /**
