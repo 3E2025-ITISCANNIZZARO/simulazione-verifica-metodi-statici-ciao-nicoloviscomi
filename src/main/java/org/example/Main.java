@@ -57,7 +57,7 @@ public class Main {
      * Esercizio 1
      * sviluppare il metodo che restituisce la somma dei due parametri in ingresso
      * @param a addendo 1
-     * @param b addendo 2
+     * @param b addendo 2 
      * @return somma dei due addendi
      */
     public static int somma(int a,int b) {
